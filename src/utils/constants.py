@@ -1,0 +1,2 @@
+STATUSOK = "ok"
+STATUSNOTOK = "notok"
