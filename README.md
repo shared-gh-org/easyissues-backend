@@ -4,6 +4,7 @@
 - [Local Dev Setup](#local-dev-setup)
     - [Pre-requisites](#pre-requisites)
     - [Start the Server](#start-the-server)
+    - [Creating a Pull Request](#creating-a-pull-request)
 ## Local Dev Setup
 
 ### Pre-requisites
@@ -24,3 +25,15 @@ If `poetry shell` doesn't work, try `source $(poetry env info --path)/bin/activa
 ```
 curl -X GET http://localhost:8001/api/health
 ```
+
+### Creating a Pull Request
+
+1. Create a new branch locally
+`git checkout -b new_branch`
+2. Stage, commit and push your changes
+```
+git add .
+git commit
+git push origin new_branch
+```
+3. Wait for approval, then squash and merge on GitHub
