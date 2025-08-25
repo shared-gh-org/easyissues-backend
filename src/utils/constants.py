@@ -1,2 +1,2 @@
-STATUSOK = "ok"
-STATUSNOTOK = "notok"
+STATUSUP = "UP"
+STATUSDOWN = "DOWN"
