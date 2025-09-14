@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  easyissues-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: easyissues-backend
+    ports:
+      - "8001:8001"
+    networks:
+      - easyissues-network
+    depends_on:
+      - easyissues-db
+
+  easyissues-db:
+    image: postgres
+    container_name: easyissues-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: easyissues
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
+    networks:
+      - easyissues-network
+    volumes:
+      - postgresql-data:/var/lib/postgresql
+      - ./database/postgresql/tables.sql:/docker-entrypoint-initdb.d/1_tables.sql
+      - ./database/postgresql/seed_data.sql:/docker-entrypoint-initdb.d/2_seed_data.sql
+
+volumes:
+  postgresql-data:
+    driver: local
+
+networks:
+  easyissues-network:
+    driver: bridge

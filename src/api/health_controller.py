@@ -7,5 +7,5 @@ health_service = HealthService()
 
 
 @router.get("")
-def health_check():
-    return health_service.health_check()
+async def health_check():
+    return await health_service.health_check()
